@@ -18,6 +18,20 @@ Feature: Quote Scenarios
     When I should see page title as "Get a Quote"
     And I type "tammara.com" into element with xpath "//input[@name='email']"
     And  I click on element with xpath "//button[@id='formSubmit']"
+    And I wait for 5 sec
+    Then element with xpath "//label[@id='email-error']" should be displayed
+    When I clear element with xpath "//input[@name='email']"
+    And I type "tam@gmail.com" into element with xpath "//input[@name='email']"
+    Then element with xpath "//label[@id='email-error']" should not be displayed
+    And I wait for 3 sec
+
+  @quote3
+  Scenario: Validate Name Input Field Functionality
+    Given I open url "https://skryabin.com/market/quote.html"
+    When I should see page title as "Get a Quote"
+    And I type "tammara.com" into element with xpath "//input[@name='email']"
+    And  I click on element with xpath "//button[@id='formSubmit']"
+    And I wait for 5 sec
     Then element with xpath "//label[@id='email-error']" should be displayed
     When I clear element with xpath "//input[@name='email']"
     And I type "tam@gmail.com" into element with xpath "//input[@name='email']"
