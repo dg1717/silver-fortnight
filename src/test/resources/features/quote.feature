@@ -26,10 +26,3 @@ Feature: Quote Scenarios
       Then I click on element with xpath "//button[@id='formSubmit']"
       And I wait for 3 sec
       Then element with xpath "//label[@id='email-error']" should not be displayed
-
-
-
-
-
-    
-    
