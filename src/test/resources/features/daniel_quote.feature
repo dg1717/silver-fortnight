@@ -14,4 +14,19 @@ Feature: Quote Scenarios
     
   @quote2
   Scenario: Email field verification
+    Given I open url "https://skryabin.com/market/quote.html"
+    When I should see page title as "Get a Quote"
+    Given I type "AB" into element with xpath "//input[@name='username']"
+    Then I type "abc" into element with xpath "//input[@name='email']"
+    Then I click on element with xpath "//button[@id='formSubmit']" 
+    Then element with xpath "//label[@id='email-error']" should be displayed
+    Then I wait for 2 sec
+    Then I clear element with xpath "//input[@name='email']"
+    Then I type "ab@" into element with xpath "//input[@name='email']"
+    Then element with xpath "//label[@id='email-error']" should be displayed
+    Then I wait for 2 sec
+    Then I clear element with xpath "//input[@name='email']"
+    Then I type "ab@gmail.com" into element with xpath "//input[@name='email']"
+    Then element with xpath "//label[@id='email-error']" should not be displayed
+
 
