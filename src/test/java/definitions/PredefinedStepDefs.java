@@ -224,4 +224,9 @@ public class PredefinedStepDefs {
         new Actions(getDriver()).moveToElement(getDriver().findElement(By.xpath(xpath))).perform();
     }
 
+    @Then("^I hit cancel button in attachment window \"([^\"]*)\"$")
+    public void cancelAttachmentWindow(String st1){
+        st1="test";
+    }
+
 }
