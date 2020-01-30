@@ -8,9 +8,14 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.But;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.Date;
 import java.util.Iterator;
@@ -224,9 +229,21 @@ public class PredefinedStepDefs {
         new Actions(getDriver()).moveToElement(getDriver().findElement(By.xpath(xpath))).perform();
     }
 
-    @Then("^I hit cancel button in attachment window \"([^\"]*)\"$")
-    public void cancelAttachmentWindow(String st1){
-        st1="test";
+    @Then("^I hit cancel button in attachment window$")
+    public void cancelAttachmentWindow(){
+            String filePath = "/Users/xiaohongyu/adbcap.png";
+            String url = "https://skryabin.com/market/quote.html";
+            WebElement chooseFile = getDriver().findElement(By.xpath("//input[@id='attachment']"));
+            chooseFile.sendKeys(filePath);
+            Robot r = null;
+            try {
+                r = new Robot();
+            } catch (AWTException e) {
+                e.printStackTrace();
+            }
+            r.keyPress(KeyEvent.VK_ENTER);
+            r.keyRelease(KeyEvent.VK_ENTER);
+            r.keyPress(KeyEvent.VK_CANCEL);
+            getDriver().switchTo().activeElement();
     }
-
 }

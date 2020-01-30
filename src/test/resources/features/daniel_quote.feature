@@ -63,12 +63,12 @@ Feature: Quote Scenarios
     Then I switch to first window
     Then I click on element using JavaScript with xpath "//input[@name='agreedToPrivacyPolicy']"
     Then I click on element using JavaScript with xpath "//input[@id='attachment']"
-    Then I hit cancel button in attachment window "test"
     Then I switch to first window
-    Given I click on element with xpath "//*[@id='formSubmit']"
+    Then I hit cancel button in attachment window
+    Then I click on element with xpath "//*[@id='formSubmit']"
     Then I switch to new window
     Then I should see page title as "Get a Quote"
-    Then I wait for 3 sec
+    Then I wait for 30 sec
 
 
 
