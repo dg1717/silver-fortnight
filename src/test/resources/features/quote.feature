@@ -68,3 +68,16 @@ Feature: Quote Scenarios
 #    Then element with xpath "//span[@id='thirdPartyResponseMessage']" should contain text "You accepted third party agreement."
 #    Then element with xpath "//span[@id='thirdPartyResponseMessage']" should have text as "You accepted third party agreement."
     And I wait for 3 sec
+
+
+
+  @quote6
+  Scenario: Validate  "accept 3rd party agreement"
+    Given I open url "https://skryabin.com/market/quote.html"
+    When I click on element with xpath "//button[@id='thirdPartyButton']"
+    And I wait for 3 sec
+    And I accept alert
+    Then element with xpath "//span[@id='thirdPartyResponseMessage']" should contain text "You accepted "
+#    Then element with xpath "//span[@id='thirdPartyResponseMessage']" should contain text "You accepted third party agreement."
+#    Then element with xpath "//span[@id='thirdPartyResponseMessage']" should have text as "You accepted third party agreement."
+    And I wait for 3 sec
