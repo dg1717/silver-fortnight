@@ -12,3 +12,4 @@ Feature: Smoke steps
     Then element with xpath "//*[@id='res']" should contain text "Cucumber"
 
 
+
