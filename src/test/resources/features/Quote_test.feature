@@ -53,13 +53,4 @@ Feature: Quote-test
     When I dismiss alert
     Then element with xpath "//span[text()='You did not accept third party agreement.']" should be displayed
 
-
-
-
-
-
-
-
-
-
-
+    
