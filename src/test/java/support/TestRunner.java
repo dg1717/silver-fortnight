@@ -7,11 +7,17 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
+//@CucumberOptions(
+//        plugin = {"pretty", "html:target/cucumber", "json:target/cucumber/report.json"},
+//        features = "src/test/resources/features",
+//        glue = {"definitions", "support"},
+//        tags = {"@predefined"} // same as VM option -Dcucumber.options="--tags @predefined"
+//)
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber", "json:target/cucumber/report.json"},
         features = "src/test/resources/features",
         glue = {"definitions", "support"},
-        tags = {"@predefined"} // same as VM option -Dcucumber.options="--tags @predefined"
+        tags = {"@predefined"} // same as VM option -Dcucumber.options="--tags @quote"
 )
 public class TestRunner {
     @BeforeClass
