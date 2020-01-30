@@ -68,7 +68,7 @@ Feature: Quote Scenarios
     Then I click on element with xpath "//*[@id='formSubmit']"
     Then I switch to new window
     Then I should see page title as "Get a Quote"
-    Then I wait for 30 sec
+    Then I wait for 3 sec
 
 
 
