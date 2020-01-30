@@ -51,21 +51,31 @@ Feature: Quote Scenarios
         Then I wait for 3 sec
 
         @quote4
-        Scenario: Validate Date of Birth Input Field Functionality
+         Scenario: Validate Date of Birth Input -By Date Picker 2
+          Given I open url "https://skryabin.com/market/quote.html"
+          Then I should see page title as "Get a Quote"   
+          Then I click on element with xpath "//input[@id='dateOfBirth']"
+          Then I click on element with xpath "//*[text()='Prev']"
+          Then I click on element with xpath "//*[text()='Next']"
+          And I click on element with xpath "//*[@value='9']"
+          And I click on element with xpath "//*[@value='1984']"
+          And I click on element with xpath "//a[text()='7']"
+          And I wait for 4 sec
+          Then element with xpath "//input[@id='dateOfBirth']" should have attribute "value" as "10/07/1984"
+
+        @qoute5
+        Scenario: Validate Date of Birth -By Date
           Given I open url "https://skryabin.com/market/quote.html"
           Then I should see page title as "Get a Quote"
-          When I clear element with xpath "//input[@id='dateOfBirth']"
-          Then element with xpath "//div[@id='ui-datepicker-div']" should be displayed
-          When I type "10/02/1984" into element with xpath "//input[@id='dateOfBirth']"
-          Then I click on element with xpath "//select[@name='countryOfOrigin']"
+          When I type "10/07/1984" into element with xpath "//input[@id='dateOfBirth']"
+          Then element with xpath "//input[@id='dateOfBirth']" should be displayed
           And I wait for 3 sec
 
-        @quote5
-        Scenario: Veify "accept 3rd party agreement"  Functionality
+        @quote6
+        Scenario: Verify "accept 3rd party agreement"  Functionality
           Given I open url "https://skryabin.com/market/quote.html"
           Then I should see page title as "Get a Quote"
           When I click on element with xpath "//button[@id='thirdPartyButton']"
-          Then I switch to new window
           Then I dismiss alert
           And I wait for 5 sec
           Then element with xpath "//span[@id='thirdPartyResponseMessage']" should be displayed
@@ -76,10 +86,34 @@ Feature: Quote Scenarios
           And I wait for 5 sec
           Then element with xpath "//span[@id='thirdPartyResponseMessage']" should be displayed
           And I wait for 3 sec
-  
 
+        @quote7
+        Scenario: Verify "Additional Info"  Switching to iFrame
+          Given I open url "https://skryabin.com/market/quote.html"
+          When I switch to iframe with xpath "//iframe[@name='additionalInfo']"
+          Then I type "Thiru" into element with xpath "//input[@id='contactPersonName']"
+          Then I type "1234567890" into element with xpath "//input[@id='contactPersonPhone']"
+          And element with xpath "//input[@id='contactPersonName']" should have attribute "value" as "Thiru"
+          And element with xpath "//input[@id='contactPersonPhone']" should have attribute "value" as "1234567890"
+          And I switch to default content
+          And I wait for 2 sec
 
+        @quote8
+        Scenario: Verify Car Make Functionality -BY Mouse Over
+          Given I open url "https://skryabin.com/market/quote.html"
+          When I click on element with xpath "//*[@value='Toyota']"
+          Then element with xpath "//*[@value='Toyota']" should be selected
+          Then I mouse over element with xpath "//*[@value='Toyota']"
+          When I click on element with xpath "//*[@value='Ford']"
+          Then element with xpath "//*[@value='Ford']" should be selected
+          And I wait for 2 sec
 
+        @quote9
+        Scenario: Verify Attached File
+          Given I open url "https://skryabin.com/market/quote.html"
+          When I type "C:\Users\rnila\Desktop\Logs\log1.txt" into element with xpath "//input[@id='attachment']"
+          And I wait for 5 sec
+          
 
 
 
