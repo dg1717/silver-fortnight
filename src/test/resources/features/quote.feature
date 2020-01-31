@@ -113,9 +113,5 @@ Feature: Quote Scenarios
           Given I open url "https://skryabin.com/market/quote.html"
           When I type "C:\Users\rnila\Desktop\Logs\log1.txt" into element with xpath "//input[@id='attachment']"
           And I wait for 5 sec
-          
 
-
-
-    
-    
+        
