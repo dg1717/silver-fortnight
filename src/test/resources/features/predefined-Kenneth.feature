@@ -12,7 +12,7 @@ Feature: Smoke steps
     Then element with xpath "//*[@id='res']" should contain text "Cucumber"
 
 
-  @predefined1
+  @quote1
   Scenario: Predefined steps for Quote - Username validation
     Given I open url "https://skryabin.com/market/quote.html"
     Then I should see page title as "Get a Quote"
@@ -21,7 +21,7 @@ Feature: Smoke steps
     When I click on element with xpath "//label[contains(text(),'Username')]"
     Then element with xpath "//label[@id='username-error']" should be present
 
-  @predefined1
+  @quote2
   Scenario: Predefined steps for Quote - Email validation
     Given I open url "https://skryabin.com/market/quote.html"
     Then I should see page title as "Get a Quote"
@@ -30,14 +30,14 @@ Feature: Smoke steps
     When I click on element with xpath "//label[contains(text(),'Email')]"
     Then element with xpath "//label[@id='email-error']" should be present
 
-  @predefined1
+  @quote3
   Scenario: Predefined steps for Quote - Confirm Password validation
     Given I open url "https://skryabin.com/market/quote.html"
     Then I should see page title as "Get a Quote"
     Then element with xpath "//input[@id='confirmPassword']" should be present
     Then element with xpath "//input[@id='confirmPassword']" should be disabled
 
-  @predefined1
+  @quote4
   Scenario: Predefined steps for Quote - Name validation
     Given I open url "https://skryabin.com/market/quote.html"
     Then I should see page title as "Get a Quote"
@@ -50,7 +50,7 @@ Feature: Smoke steps
     When I click on element with xpath "//span[contains(text(),'Save')]"
     Then element with xpath "//input[@id='name'][@value='Chichoi Kenneth Chan']" should be present
 
-  @predefined1
+  @quote5a
   Scenario: Predefined steps for Quote - DOB validation
     Given I open url "https://skryabin.com/market/quote.html"
     Then I should see page title as "Get a Quote"
@@ -60,14 +60,60 @@ Feature: Smoke steps
     When I click on element with xpath "//label[contains(text(),'Date of Birth')]"
     Then element with xpath "//b[@name='dateOfBirth'][contains(text(),'02/20/2000')]" should be present
 
-  @predefined1
+  @quote5b
+  Scenario: Verification of Data of Birth - Datepicker
+    Given I open url "https://skryabin.com/market/quote.html"
+    Then I should see page title as "Get a Quote"
+    When I click on element with xpath "//*[@id='dateOfBirth']"
+    And I click on element with xpath "//*[text()='Prev']"
+    And I click on element with xpath "//*[text()='Next']"
+    And I click on element with xpath "//*[@value='8']"
+    And I click on element with xpath "//*[@value='2019']"
+    And I click on element with xpath "//a[text()='24']"
+    And I wait for 5 sec
+  #   Then element with xpath "//*[@id='dateOfBirth']" should contain text "09/24/2019"
+    Then element with xpath "//*[@id='dateOfBirth']" should have attribute "value" as "09/24/2019"
+#    Then element with xpath "//*[@id='dateOfBirth'][@value='02/20/2000']" should be present
+
+
+  @quote6
   Scenario: Predefined steps for Quote - 3rd party agreement validation
     Given I open url "https://skryabin.com/market/quote.html"
     Then I should see page title as "Get a Quote"
     Then element with xpath "//button[@id='thirdPartyButton']" should be present
     When I click on element with xpath "//button[@id='thirdPartyButton']"
     When I accept alert
-    Then element with xpath "//span[@id='thirdPartyResponseMessage'][contains(text(),'You accepted third party agreement.')]" should be present
+#    Then element with xpath "//span[@id='thirdPartyResponseMessage'][contains(text(),'You accepted third party agreement.')]" should be present
+    Then element with xpath "//span[contains(text(),'You accepted')]" should be displayed
     When I click on element with xpath "//button[@id='thirdPartyButton']"
     When I dismiss alert
-    Then element with xpath "//span[@id='thirdPartyResponseMessage'][contains(text(),'You did not accept third party agreement.')]" should be present
+#    Then element with xpath "//span[@id='thirdPartyResponseMessage'][contains(text(),'You did not accept third party agreement.')]" should be present
+    Then element with xpath "//span[contains(text(),'did not accept')]" should be displayed
+
+  @quote7
+  Scenario: Predefined steps for Additional Information - switch to iFrame
+    Given I open url "https://skryabin.com/market/quote.html"
+    Then I should see page title as "Get a Quote"
+    When I switch to iframe with xpath "//iframe[@name='additionalInfo']"
+    And I type "Kenneth" into element with xpath "//input[@id='contactPersonName']"
+    And I type "4081234567" into element with xpath "//input[@id='contactPersonPhone']"
+    Then element with xpath "//input[@id='contactPersonName']" should have attribute "value" as "Kenneth"
+    Then element with xpath "//input[@id='contactPersonPhone']" should have attribute "value" as "4081234567"
+    And I switch to default content
+
+  @quote8
+  Scenario: Predefined steps for mouse over functionality
+    Given I open url "https://skryabin.com/market/quote.html"
+    Then I should see page title as "Get a Quote"
+    When I click on element with xpath "//*[@value='Ford']"
+    Then element with xpath "//*[@value='Ford']" should be selected
+    When I mouse over element with xpath "//*[@value='Toyota']"
+    When I click on element with xpath "//*[@value='Toyota']"
+    Then element with xpath "//*[@value='Toyota']" should be selected
+
+  @quote8
+  Scenario: Predefined steps for attached file
+    Given I open url "https://skryabin.com/market/quote.html"
+    Then I should see page title as "Get a Quote"
+    When I type "/Users/admin/Downloads/nerfGun.jpeg" into element with xpath "//input[@id='attachment']"
+    And I wait for 5 sec
