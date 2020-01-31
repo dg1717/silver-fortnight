@@ -76,8 +76,8 @@ Feature: Quote Scenarios
     When I click on element with xpath "//input[@id='dateOfBirth']"
     And I click on element with xpath "//*[text()='Prev']"
     And I click on element with xpath "//*[text()='Next']"
- #   And I click on element with xpath "//*[@data-handler='selectMonth']//*[@value='8']"
- #   And I click on element with xpath "//*[@data-handler='selectYear']//*[@value='2019']"
+#    And I click on element with xpath "//*[@class='ui-datepicker-month']//*[@value='9']"
+#    And I click on element with xpath "//*[@data-handler='selectYear']//*[@value='2019']"
     And I click on element with xpath "//*[@value='9']"
     And I click on element with xpath "//*[@value='2019']"
     And I click on element with xpath "//a[text()='24']"
@@ -85,7 +85,7 @@ Feature: Quote Scenarios
     Then element with xpath "//*[@id='dateOfBirth']" should have attribute "value" as "10/24/2019"
 
   @quote5
-  Scenario: thirty party validation
+  Scenario: Third party validation
     Given I open url "https://skryabin.com/market/quote.html"
     When I click on element with xpath "//button[@id='thirdPartyButton']"
     Then I dismiss alert
@@ -95,25 +95,26 @@ Feature: Quote Scenarios
     Then element with xpath "//span[contains(text(),'You accepted')]" should be displayed
 
   @Quote6
-  Scenario: thirty mine party validation
+  Scenario: Additional information validation
     Given I open url "https://skryabin.com/market/quote.html"
     When I switch to iframe with xpath "//iframe[@name='additionalInfo']"
     And I type "Galina" into element with xpath "//input[@id='contactPersonName']"
     And I type "123-456-7890" into element with xpath "//input[@id='contactPersonPhone']"
     Then element with xpath "//input[@id='contactPersonName']" should have attribute "value" as "Galina"
+    Then element with xpath "//input[@id='contactPersonPhone']" should have attribute "value" as "123-456-7890"
 
-  @Quote6
-  Scenario: mouse over validation
+  @Quote7
+  Scenario: Mouse over validation
     Given I open url "https://skryabin.com/market/quote.html"
     When I click on element with xpath "//*[@value='Ford']"
 #    When I mouse over element with xpath "//*[@value='Ford']"
     Then element with xpath "//*[@value='Ford']" should be selected
-    When I mouse over element with xpath "//*[@value='Toyota']"
+#    When I mouse over element with xpath "//*[@value='Toyota']"
     When I click on element with xpath "//*[@value='Toyota']"
     Then element with xpath "//*[@value='Toyota']" should be selected
     Then I wait for 10 sec
 
-  @Quote6/Users/xiaohongyu/Desktop
+  @Quote8
   Scenario: validation of attached file
     Given I open url "https://skryabin.com/market/quote.html"
     When I type "/Users/xiaohongyu/Desktop/test1.txt" into element with xpath "//input[@id='attachment']"
