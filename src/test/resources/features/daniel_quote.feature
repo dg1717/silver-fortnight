@@ -16,7 +16,6 @@ Feature: Quote Scenarios
   Scenario: Email field verification
     Given I open url "https://skryabin.com/market/quote.html"
     When I should see page title as "Get a Quote"
-    Given I type "AB" into element with xpath "//input[@name='username']"
     Then I type "abc" into element with xpath "//input[@name='email']"
     Then I click on element with xpath "//button[@id='formSubmit']" 
     Then element with xpath "//label[@id='email-error']" should be displayed
