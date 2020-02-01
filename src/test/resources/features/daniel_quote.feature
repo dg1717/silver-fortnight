@@ -61,9 +61,8 @@ Feature: Quote Scenarios
     Then I click on element using JavaScript with xpath "//img[@alt='Download']"
     Then I switch to first window
     Then I click on element using JavaScript with xpath "//input[@name='agreedToPrivacyPolicy']"
-    Then I click on element using JavaScript with xpath "//input[@id='attachment']"
+    When I type "/Users/xiaohongyu/Desktop/test1.txt" into element with xpath "//input[@id='attachment']"
     Then I switch to first window
-    Then I hit cancel button in attachment window
     Then I click on element with xpath "//*[@id='formSubmit']"
     Then I switch to new window
     Then I should see page title as "Get a Quote"

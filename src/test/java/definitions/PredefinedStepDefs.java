@@ -229,22 +229,4 @@ public class PredefinedStepDefs {
         new Actions(getDriver()).moveToElement(getDriver().findElement(By.xpath(xpath))).perform();
     }
 
-    @Then("^I hit cancel button in attachment window$")
-    public void cancelAttachmentWindow() {
-        String filePath = "/Users/xiaohongyu/adbcap.png";
-        String url = "https://skryabin.com/market/quote.html";
-        WebElement chooseFile = getDriver().findElement(By.xpath("//input[@id='attachment']"));
-        chooseFile.sendKeys(filePath);
-        Robot r = null;
-        try {
-            r = new Robot();
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
-        r.keyPress(KeyEvent.VK_ENTER);
-        r.keyRelease(KeyEvent.VK_ENTER);
-        r.keyPress(KeyEvent.VK_CANCEL);
-        getDriver().switchTo().activeElement();
-    }
-
 }
