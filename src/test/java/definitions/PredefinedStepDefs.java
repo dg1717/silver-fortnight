@@ -253,5 +253,10 @@ public class PredefinedStepDefs {
         comboboxClear.sendKeys(Keys.CONTROL + "a");
         comboboxClear.sendKeys(Keys.DELETE);
     }
+    @When("^I click submit button on element with xpath \"([^\"]*)\"$")
+    public void clickSubmitButtonOnElementWithXpath(String xpath) {
+        WebElement submitButton = getDriver().findElement(By.xpath(xpath));
+        submitButton.submit();
+    }
 
 }
