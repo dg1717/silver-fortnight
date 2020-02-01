@@ -43,7 +43,7 @@ public class PredefinedStepDefs {
     public void iMaximizeWindow() {
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         Dimension maxWindowSize = new Dimension((int) screenSize.getWidth(), (int) screenSize.getHeight());
-        getDriver().manage().window().setPosition(new Point(0,0));
+        getDriver().manage().window().setPosition(new Point(0, 0));
         getDriver().manage().window().setSize(maxWindowSize);
     }
 
@@ -169,7 +169,7 @@ public class PredefinedStepDefs {
     public void iSwitchToNewWindow() {
         Iterator<String> iterator = getDriver().getWindowHandles().iterator();
         String newWindow = iterator.next();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             newWindow = iterator.next();
         }
         getDriver().switchTo().window(newWindow);
@@ -230,20 +230,28 @@ public class PredefinedStepDefs {
     }
 
     @Then("^I hit cancel button in attachment window$")
-    public void cancelAttachmentWindow(){
-            String filePath = "/Users/xiaohongyu/adbcap.png";
-            String url = "https://skryabin.com/market/quote.html";
-            WebElement chooseFile = getDriver().findElement(By.xpath("//input[@id='attachment']"));
-            chooseFile.sendKeys(filePath);
-            Robot r = null;
-            try {
-                r = new Robot();
-            } catch (AWTException e) {
-                e.printStackTrace();
-            }
-            r.keyPress(KeyEvent.VK_ENTER);
-            r.keyRelease(KeyEvent.VK_ENTER);
-            r.keyPress(KeyEvent.VK_CANCEL);
-            getDriver().switchTo().activeElement();
+    public void cancelAttachmentWindow() {
+        String filePath = "/Users/xiaohongyu/adbcap.png";
+        String url = "https://skryabin.com/market/quote.html";
+        WebElement chooseFile = getDriver().findElement(By.xpath("//input[@id='attachment']"));
+        chooseFile.sendKeys(filePath);
+        Robot r = null;
+        try {
+            r = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+        r.keyPress(KeyEvent.VK_ENTER);
+        r.keyRelease(KeyEvent.VK_ENTER);
+        r.keyPress(KeyEvent.VK_CANCEL);
+        getDriver().switchTo().activeElement();
     }
+
+    @When("^I clear combobox element with xpath \"([^\"]*)\"$")
+    public void comboboxClearElementWithXpath(String xpath) {
+        WebElement comboboxClear = getDriver().findElement(By.xpath(xpath));
+        comboboxClear.sendKeys(Keys.CONTROL + "a");
+        comboboxClear.sendKeys(Keys.DELETE);
+    }
+
 }
