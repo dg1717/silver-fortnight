@@ -247,16 +247,4 @@ public class PredefinedStepDefs {
         getDriver().switchTo().activeElement();
     }
 
-    @When("^I clear combobox element with xpath \"([^\"]*)\"$")
-    public void comboboxClearElementWithXpath(String xpath) {
-        WebElement comboboxClear = getDriver().findElement(By.xpath(xpath));
-        comboboxClear.sendKeys(Keys.CONTROL + "a");
-        comboboxClear.sendKeys(Keys.DELETE);
-    }
-    @When("^I click submit button on element with xpath \"([^\"]*)\"$")
-    public void clickSubmitButtonOnElementWithXpath(String xpath) {
-        WebElement submitButton = getDriver().findElement(By.xpath(xpath));
-        submitButton.submit();
-    }
-
 }
