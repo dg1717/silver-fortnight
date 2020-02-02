@@ -44,6 +44,9 @@ public class TestContext {
                     chromeDriverName = "chromedriver";
                 }
                 System.setProperty("webdriver.chrome.driver", getDriversDirPath() + chromeDriverName);
+		if (osName != null && osName.contains("Linux")){
+			System.setProperty("webdriver.chrome.driver", /usr/bin/chromedriver);
+		}
                 Map<String, Object> chromePreferences = new HashMap<>();
                 chromePreferences.put("profile.default_content_settings.geolocation", 2);
                 chromePreferences.put("download.prompt_for_download", false);
