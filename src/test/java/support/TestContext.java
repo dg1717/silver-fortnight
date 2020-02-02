@@ -72,7 +72,7 @@ public class TestContext {
                 }
                 System.setProperty("webdriver.gecko.driver", getDriversDirPath() + geckoDriverName);
 		if (osName != null && osName.contains("Linux")){
-                        System.setProperty("webdriver.chrome.driver", "/usr/bin/geckodriver");
+                        System.setProperty("webdriver.gecko.driver", "/usr/bin/geckodriver");
                 }
                 System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
                 System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
