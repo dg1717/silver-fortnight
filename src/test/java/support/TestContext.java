@@ -28,7 +28,7 @@ public class TestContext {
     }
 
     public static void initialize() {
-        initialize("firefox", false);
+        initialize("chrome", false);
     }
     public static void teardown() {
         driver.quit();
