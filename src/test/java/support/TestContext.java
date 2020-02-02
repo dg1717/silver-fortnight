@@ -30,7 +30,6 @@ public class TestContext {
     public static void initialize() {
         initialize("chrome", false);
     }
-
     public static void teardown() {
         driver.quit();
     }
@@ -45,7 +44,7 @@ public class TestContext {
                 }
                 System.setProperty("webdriver.chrome.driver", getDriversDirPath() + chromeDriverName);
 		if (osName != null && osName.contains("Linux")){
-			System.setProperty("webdriver.chrome.driver", /usr/bin/chromedriver);
+			System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 		}
                 Map<String, Object> chromePreferences = new HashMap<>();
                 chromePreferences.put("profile.default_content_settings.geolocation", 2);
