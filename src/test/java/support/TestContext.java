@@ -57,6 +57,7 @@ public class TestContext {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--start-maximized");
                 chromeOptions.setExperimentalOption("prefs", chromePreferences);
+		cromeOptions.setBinary("/etc/alternatives/google-chrome");
 //                if (isHeadless) {
 //                  chromeOptions.setHeadless(true);
 //                  chromeOptions.addArguments("--window-size=1920,1080");
