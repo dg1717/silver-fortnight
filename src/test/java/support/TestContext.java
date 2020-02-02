@@ -57,11 +57,11 @@ public class TestContext {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--start-maximized");
                 chromeOptions.setExperimentalOption("prefs", chromePreferences);
-                if (isHeadless) {
-                    chromeOptions.setHeadless(true);
-                    chromeOptions.addArguments("--window-size=1920,1080");
-                    chromeOptions.addArguments("--disable-gpu");
-                }
+//                if (isHeadless) {
+//                  chromeOptions.setHeadless(true);
+//                  chromeOptions.addArguments("--window-size=1920,1080");
+//                    chromeOptions.addArguments("--disable-gpu");
+//                }
                 driver = new ChromeDriver(chromeOptions);
                 break;
             case "firefox":
