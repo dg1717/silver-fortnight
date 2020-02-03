@@ -228,5 +228,15 @@ public class PredefinedStepDefs {
     public void iMouseOverElementWithXpath(String xpath) {
         new Actions(getDriver()).moveToElement(getDriver().findElement(By.xpath(xpath))).perform();
     }
+    @Then("^I press enter on element with xpath \"([^\"]*)\"$")
+    public void pressEnterOnElementWithXpath(String xpath) {
+        WebElement element = getDriver().findElement(By.xpath(xpath));
+        element.sendKeys(Keys.UP);
+    }
+    @Then("^I press submit form on element with xpath \"([^\"]*)\"$")
+    public void submitFormOnElementWithXpath(String xpath) {
+        WebElement element = getDriver().findElement(By.xpath(xpath));
+        element.submit();
+    }
 
 }
