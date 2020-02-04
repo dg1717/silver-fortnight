@@ -114,4 +114,50 @@ Feature: Quote Scenarios
           When I type "C:\Users\rnila\Desktop\Logs\log1.txt" into element with xpath "//input[@id='attachment']"
           And I wait for 5 sec
 
-        
+        @quote10
+        Scenario: Validate the "View documents" functionality
+         Given I open url "https://skryabin.com/market/quote.html"
+         When I click on element with xpath "//a[contains(@id,'link')]"
+         And I wait for 2 sec
+         Then I switch to new window
+         And I should see page title as "Documents Page"
+         And I wait for 2 sec
+          Then I switch to default content
+         And I wait for 2 sec
+
+         @quote11
+         Scenario: Validates the End-to-End Quote page workflow
+           Given I open url "https://skryabin.com/market/quote.html"
+           Then I click on element with xpath "//input[@id='name']"
+           Then I type "Nila" into element with xpath "//input[@id='firstName']"
+           And I type "Raju" into element with xpath "//input[@id='lastName']"
+           Then I click on element with xpath "//span[contains(text(),'Save')]"
+           Then element with xpath "//input[@id='name']" should have attribute "value" as "Nila Raju"
+           And I wait for 2 sec
+           Then I type "vrazhagunila" into element with xpath "//label[text()='Username']/..//input[@name='username']"
+           And I type "vrazhagunila@gmail.com" into element with xpath "//input[contains(@name,'email')]"
+           And I wait for 2 sec
+           Then I type "12345" into element with xpath "//input[@id='password']"
+           Then I type "12345" into element with xpath "//input[@id='confirmPassword']"
+           Then I type "1234567890" into element with xpath "//label[text()='Phone Number']/..//input[contains(@name,'phone')]"
+           Then I click on element with xpath "//input[@id='dateOfBirth']"
+           Then I click on element with xpath "//option[contains(text(),'Oct')]"
+           Then I click on element with xpath "//option[@value='1984']"
+           Then I click on element with xpath "//a[text()='7']"
+           And I wait for 2 sec
+           Then element with xpath "//input[@id='dateOfBirth']" should have attribute "value" as "10/07/1984"
+           Then I type "3206 Haddon Way" into element with xpath "//label[contains(text(),'Address')]/..//textarea[@id='address']"
+           Then I click on element with xpath "//input[@name='gender'] [@value='female']"
+           Then I click on element with xpath "//input[@name='allowedToContact']"
+           Then I click on element with xpath "//option[contains(@value,'USA')]"
+           Then I click on element with xpath "//option[@value='BMW']"
+           Then I switch to iframe with xpath "//iframe[@name='additionalInfo']"
+           Then I type "Thiru" into element with xpath "//input[@id='contactPersonName']"
+           Then I type "1234567890" into element with xpath "//input[@id='contactPersonPhone']"
+           Then I switch to default content
+           Then I click on element with xpath "//input[@name='agreedToPrivacyPolicy']"
+           When I click on element with xpath "//button[@id='formSubmit']"
+           Then I switch to new window
+           When I click on element with xpath "//button[@id='return']"
+           Then I switch to default content
+           And I wait for 3 sec
