@@ -66,7 +66,8 @@
       Then element with xpath "//input[@id='braintreeCardOwner']" should have attribute "value" as "Express Student"
       When I switch to iframe with xpath "//iframe[@id='braintree-hosted-field-number']"
       When I wait for element with xpath "//*[contains(@id,'number')]" to be present
-      When I type "4111111111111111" into element with xpath "//*[contains(@id,'number')]"
+      When I type "4111\1111\1111\1111" into element with xpath "//*[contains(@id,'number')]"
+      Then element with xpath "//*[contains(@id,'number')]" should have attribute "value" as "4111 1111 1111 1111"
       When I switch to default content
       When I switch to iframe with xpath "//iframe[@id='braintree-hosted-field-cvv']"
       When I type "103" into element with xpath "//*[contains(@id,'cvv')]"
