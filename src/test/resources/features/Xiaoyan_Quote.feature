@@ -89,17 +89,7 @@ Feature: Quote-test
        And I switch to default content
 
 
-      @predefined-Quote-Related-new-window-homework
-      Scenario: Verification related documents
-        Given I open url "https://skryabin.com/market/quote.html"
-        When I click on element with xpath "//button[contains(text(),'Related')]"
-        Then I switch to new window
-        And element with xpath "//h4[text()='Documents List:']" should be displayed
-        Then I switch to first window
-        When I click on element with xpath "//a[text()='View documents']"
-        Then I switch to new window
-        And element with xpath "//h4[text()='Documents List:']" should be displayed
-        Then I switch to first window
+
 
 
 
@@ -124,6 +114,19 @@ Feature: Quote-test
         Then I wait for 5 sec
         When I type "/Users/xyz/Desktop/homework.png" into element with xpath "//input[@id='attachment']"
         Then I wait for 5 sec
+
+
+      @predefined-Quote-Related-new-window-homework
+      Scenario: Verification related documents
+        Given I open url "https://skryabin.com/market/quote.html"
+        When I click on element with xpath "//button[contains(text(),'Related')]"
+        Then I switch to new window
+        And element with xpath "//h4[text()='Documents List:']" should be displayed
+        Then I switch to first window
+        When I click on element with xpath "//a[text()='View documents']"
+        Then I switch to new window
+        And element with xpath "//h4[text()='Documents List:']" should be displayed
+        Then I switch to first window
 
       @Quote-end-to-end-Quote-homework
       Scenario: Verification of End-to-End Quote page workflow
