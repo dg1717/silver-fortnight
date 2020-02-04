@@ -45,17 +45,16 @@
         Scenario: Date picker
         Given I open url "https://urbanstems.com"
         When I click on element using JavaScript with xpath "//div[contains(@class,'header__menu')]//span[@class='cat-name'][contains(text(),'Flowers')]"
-        Then I clear element with xpath "//input[contains(@id,'datepicker')]"
+        Then I clear element with xpath "//input[@class='datepicker']"
         Then I wait for 3 sec
 #        Then I click on element using JavaScript with xpath "//input[contains(@id,'datepicker')]"
-        When I click on element with xpath "//input[contains(@id,'datepicker')]"
+        When I click on element with xpath "//input[@class='datepicker']"
 #        And I click on element with xpath "//button[@class='pika-prev is-disabled']"
-#        And I click on element with xpath "//button[@class='pika-next is-disabled']"
         And I click on element with xpath "//option[contains(text(),'2020')]"
         And I click on element with xpath "//option[contains(text(),'February')]"
-        And I click on element using JavaScript with xpath "//table[@class='pika-table']//td[@data-day='14']"
-        Then element with xpath "//input[contains(@id,'datepicker')]" should have text as "Fri Feb 14 2020"
-#        Then element with xpath "//input[contains(@id,'datepicker')]" should have attribute "value" as "Fri Feb 14 2020"
+        And I click on element using JavaScript with xpath "//td[@data-day='14']"
+#        Then element with xpath "//input[contains(@id,'datepicker')]" should have text as "Fri Feb 14 2020"
+        Then element with xpath "//input[@class='datepicker']" should have attribute "value" as "Fri Feb 14 2020"
         Then I wait for 3 sec
 
 
