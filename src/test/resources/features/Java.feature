@@ -2,7 +2,7 @@
     Feature: java
 
     @java
-    Scenario: Helo World
+    Scenario: Hello World
       Given I say Hello World
       When I print "Hello World!"
 
@@ -77,3 +77,4 @@
       Given I print "saturday" day of week
       Given I print "sUnday" day of week
       Given I print "anyday" day of week
+
