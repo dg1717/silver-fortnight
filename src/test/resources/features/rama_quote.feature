@@ -90,3 +90,44 @@ Feature: Quote Scenarios
          And I wait for 5 sec
 
 
+         @quote8
+         Scenario: Predefined steps for Quote
+           Given I open url "https://skryabin.com/market/quote.html"
+           Then I should see page title as "Get a Quote"
+           When I click on element with xpath "//input[@id='name']"
+           Then I wait for 5 sec
+           When I type "Rama" into element with xpath "//input[@id='firstName']"
+           Then I type "Devi" into element with xpath "//input[@id='middleName']"
+           Then I type "Devalla" into element with xpath "//input[@id='lastName']"
+           Then I click on element with xpath "//span[contains(text(),'Save')]"
+           When I click on element with xpath "//select[@name='countryOfOrigin']"
+           Then I click on element with xpath "//option[contains(text(),'India')]"
+           Then I click on element with xpath "//textarea[@id='address']"
+           Then I type "955 Escalon ave" into element with xpath "//textarea[@id='address']"
+           Then I click on element with xpath "//input[@name='username']"
+           Then I type "Rhama" into element with xpath "//input[@name='username']"
+#          Then I type "<Rhama>" into  element with xpath "//input[@name='username']"
+           Then I type "rhama.devalla@gamil.com" into element with xpath "//input[@name='email']"
+           Then I type "rhama@88" into element with xpath "//input[@id='password']"
+           Then I type "rhama@88" into element with xpath "//input[@id='confirmPassword']"
+           And I type "6602587255" into element with xpath "//input[@name='phone']"
+#        //label[@for='phone']/..//input[@name='phone']
+           And  I click on element with xpath " //input[@id='dateOfBirth']"
+           Then I click on element with xpath "//option[contains(text(),'May')]"
+           And I click on element with xpath "//option[contains(text(),'1993')]"
+           And I click on element with xpath "//a[contains(text(),'13')]"
+           And I click on element with xpath "//label[3]//input[1]"
+           Then I type "Toyota" into element with xpath " //select[@name='carMake']"
+#          And I click on element with xpath "//option[@value='Toyota')]"
+          And I click on element with xpath " //button[contains(text(),'Related documents (click)')]"
+           Then I switch to new window
+           And I wait for 5 sec
+           Then I switch to first window
+           And I wait for 5 sec
+           And I click on element with xpath "//input[@name='agreedToPrivacyPolicy']"
+           And I click on element with xpath " //button[@id='formSubmit']"
+           Then I wait for 5 sec
+
+
+
+
