@@ -142,4 +142,25 @@ public class JavaStepdefs {
             System.out.println(numbers[i]);
         }
     }
+
+    @Given("I revert a {string} string")
+    public void iRevertAString(String str) {
+        String [] week = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday","Saturday", "Sunday"};
+        for (int i=0; i<week.length;i++) {
+            System.out.println(week[i]);
+        }
+        System.out.println(str);
+        for (int i=str.length()-1; i>=0; i--) {
+            System.out.print(str.charAt(i));
+        }
+    }
+
+    @Given("I print day of week for number {int}")
+    public void iPrintDayOfWeekForNumber(int day) {
+        switch (day) {
+            case 1:
+                System.out.println("Monday");
+                break;
+        }
+    }
 }

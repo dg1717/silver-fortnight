@@ -43,6 +43,14 @@
     Scenario: For Loop
       Given I work with arrays
 
+    @java10
+    Scenario: Print reverse string
+      Given I revert a "Java" string
+
+    @java11
+    Scenario: Print Day of week
+      Given I print day of week for number 1
+
 
 
 
