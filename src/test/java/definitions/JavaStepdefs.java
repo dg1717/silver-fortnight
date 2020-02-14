@@ -238,4 +238,15 @@ public class JavaStepdefs {
             System.out.println(str);
         }
     }
+
+
+    @Given("I print the String in reverse order")
+    public void iPrintTheStringInReverseOrder() {
+        String[] str = {"J", "a", "v","a"};
+        System.out.println("The Array length is : " +str.length );
+        int len = str.length;
+              for ( int j = len-1 ; j >= 0; j--) {
+            System.out.print(str[j]);
+        }
+    }
 }

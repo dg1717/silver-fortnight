@@ -6,9 +6,11 @@
       Given I say Hello World
       When I print "Hello World"
 
+
     @java2
     Scenario: String Concatenation
       Given I work with strings
+
 
     @java3
     Scenario: Methods and Data types
@@ -52,3 +54,8 @@
     @java12
     Scenario: Print All elements in the Array
       Given I print days of week
+
+    @java13
+    Scenario: Print string in reverse order
+      Given I print the String in reverse order
+
