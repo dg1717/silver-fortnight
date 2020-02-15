@@ -45,9 +45,27 @@
       When I clear password field
       When I type "12345" into password field
       Then password field error message "Please enter at least 5 characters." should not be displayed
+
+
+    @market5
+    Scenario: Quote - Confirm Password field behavior validation
+      Given I go to "quote" page
+      When I navigate to "prod" environment
       When I clear password field
       Then confirm password field should be "true" disabled
       When I type "12345" into password field
       When I type "12346" into password confirm field
+      And I submit the form
       Then password confirm error message "Passwords do not match!" should be displayed
-
+      When I clear password field
+      When I type "12345" into password field
+      When I clear password confirm field
+      When I type "12345" into password confirm field
+      Then password confirm error message "Passwords do not match!" should not be displayed
+    @market6
+    Scenario: Quote - End-to-End workflow
+      Given I go to "quote" page
+      When I navigate to "prod" environment
+      And I fill out all required fields
+      And I submit the form
+      Then I verify entered data on the results page

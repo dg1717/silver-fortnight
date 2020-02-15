@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import support.TestContext;
+
+import static java.lang.Thread.sleep;
 import static support.TestContext.getDriver;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -64,7 +66,7 @@ public class MarketStepDefinitions {
     @And("I set window width to {int} and height to {int}")
     public void iSetWindowWidthToAndHeightTo(int width, int height) throws InterruptedException {
         getDriver().manage().window().setSize(new Dimension(width, height));
-        Thread.sleep(5000);
+        sleep(5000);
     }
 
     @And("I change resolution to {string}")
@@ -171,11 +173,37 @@ public class MarketStepDefinitions {
     }
 
     @Then("password confirm error message {string} should be displayed")
-    public void passwordConfirmErrorMessageShouldBeDisplayed(String pwNotMatch) {
-        //without reinput the password and confirm password, the confirmPassword-error won't show up
-        getDriver().findElement(By.xpath("//input[@id='password']")).sendKeys("12345");
-        getDriver().findElement(By.xpath("//input[@id='confirmPassword']")).sendKeys("12346");
+    public void passwordConfirmErrorMessageShouldBeDisplayed(String pwNotMatch) throws InterruptedException {
         String pwConfirmedErrorMessage = getDriver().findElement(By.xpath("//*[@id='confirmPassword-error']")).getText();
         assertThat(pwConfirmedErrorMessage).isEqualTo(pwNotMatch);
+    }
+
+    @Then("password confirm error message {string} should not be displayed")
+    public void passwordConfirmErrorMessageShouldNotBeDisplayed(String arg0) throws InterruptedException {
+        assertThat(getDriver().findElement(By.xpath("//*[@id='confirmPassword-error']")).isDisplayed()).isFalse();
+    }
+    @When("I clear password confirm field")
+    public void iClearPasswordConfirmField() {
+        getDriver().findElement(By.xpath("//input[@id='confirmPassword']")).clear();
+    }
+
+    @And("I fill out all required fields")
+    public void iFillOutAllRequiredFields() {
+        getDriver().findElement(By.xpath("//input[@name='username']")).sendKeys("Daniel");
+        getDriver().findElement(By.xpath("//input[@name='email']")).sendKeys("danielyu@gmail.com");
+        getDriver().findElement(By.xpath("//input[@name='password']")).sendKeys("12345");
+        getDriver().findElement(By.xpath("//input[@name='confirmPassword']")).sendKeys("12345");
+        getDriver().findElement(By.xpath("//input[@id='name']")).sendKeys("Daniel Yu");
+        getDriver().findElement(By.xpath("//input[@name='agreedToPrivacyPolicy']")).click();
+    }
+
+    @Then("I verify entered data on the results page")
+    public void iVerifyEnteredDataOnTheResultsPage() {
+        String email = getDriver().findElement(By.xpath("//*[@name='email']")).getText();
+        assertThat(email).isEqualTo("danielyu@gmail.com");
+        String name = getDriver().findElement(By.xpath("//*[@name='name']")).getText();
+        assertThat(name).isEqualTo("Daniel Yu");
+        String agreePloicy = getDriver().findElement(By.xpath("//*[@name='agreedToPrivacyPolicy']")).getText();
+        assertThat(agreePloicy).isEqualTo("true");
     }
 }
