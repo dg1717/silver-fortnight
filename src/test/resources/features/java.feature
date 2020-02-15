@@ -32,7 +32,7 @@
       Given I work with arrays
     @java10
     Scenario: adding two numbers
-      Given I add "11" and "19"
+      Given I add 11 and 19
     @java11
     Scenario: if else statement exercise
       And I print if number "35" is positive
@@ -41,9 +41,15 @@
     Scenario: switch statement exercise2
       And I print "2" day of week
       And I print "7" day of week
+      And I print "10" day of week
     @java13
     Scenario: for loop to print out all elements in the array
       And I print all elements in the array "weekName"
+
+    @java14
+    Scenario: reverse the order
+      And I type "Selenium" in reverse order
+
 
 
 

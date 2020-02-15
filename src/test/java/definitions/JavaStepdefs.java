@@ -184,4 +184,16 @@ public class JavaStepdefs {
             System.out.println(week[i]);
         }
     }
+
+    @And("I type {string} in reverse order")
+    public void iTypeInReverseOrder(String word) {
+        for (int i=0; i<word.length(); i++) {
+            System.out.print(word.charAt(i));
+        }
+        System.out.println();
+        for (int i=word.length()-1; i>=0; i--){
+            System.out.print(word.charAt(i));
+        }
+        System.out.println();
+    }
 }

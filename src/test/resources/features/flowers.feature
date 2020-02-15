@@ -47,7 +47,8 @@
       When I type "94022" into element with xpath "//input[@id='shippingZipCodedefault']"
       Then element with xpath "//input[@id='shippingZipCodedefault']" should have attribute "value" as "94022"
       When I type "Portnov Computer School" into element with xpath "//input[@name='dwfrm_shipping_shippingAddress_companyName']"
-      Then I type "Leave it at the desk in the classroom" into element with xpath "//input[@id='shippingInstructionsdefault']"
+      Then I press enter on element with xpath "//input[@name='dwfrm_shipping_shippingAddress_companyName']"
+      When I type "Leave it at the desk in the classroom" into element with xpath "//*[@id='shippingInstructionsdefault']"
       Then I wait for 4 sec
       When I wait for element with xpath "//textarea[@id='giftMessage']" to be present
       Then I type "Dear Galina, thank you very much for your great class! An automatic script and a beautiful flower is what we return. Thank you!" into element with xpath "//textarea[@id='giftMessage']"
