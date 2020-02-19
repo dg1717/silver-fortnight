@@ -42,6 +42,11 @@
       When I type "12345" into password field
       Then password field error message "Please enter at least 5 characters." should not be displayed
 
+    @market5
+    Scenario: Quote - Password field behavior
+      Given I go to "quote" page
+      When I navigate to "prod" environment
+      And I verify password field behavior
 
 
 

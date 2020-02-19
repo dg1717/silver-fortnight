@@ -6,6 +6,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
 import support.TestContext;
 
 import static support.TestContext.getDriver;
@@ -127,5 +128,61 @@ public class MarketStepdefs {
     public void elementWithTextShouldNotBeDisplayed(String message) {
         String errorMessage = getDriver().findElement(By.id("email-error")).getText();
         assertThat(getDriver().findElement(By.id("email-error")).isDisplayed()).isFalse();
+    }
+
+    @Then ("password field error message {string} should be displayed")
+    public void passwordFieldErrorMessageShouldBeDisplayed(String message) {
+        String pwdError = getDriver().findElement(By.id("password-error")).getText();
+        assertThat(pwdError.equals(message));
+    }
+
+    @When ("I type {string} into password field")
+    public void iTypeIntoPasswordField(String text) {
+        getDriver().findElement(By.id("password")).sendKeys(text);
+    }
+
+    @When ("I clear password field")
+    public void iClearPasswordField() {
+        getDriver().findElement(By.id("password")).clear();
+    }
+
+    @Then ("password field error message {string} should not be displayed")
+    public void passwordFieldErrorMessageShouldNotBeDisplayed(String arg0) {
+        assertThat(getDriver().findElement(By.id("password-error")).isDisplayed()).isFalse();
+    }
+
+    @And ("I verify password field behavior")
+    public void iVerifyPasswordFieldBehavior() {
+        WebElement password = getDriver().findElement(By.id("password"));
+        WebElement btnSubmit = getDriver().findElement(By.id("formSubmit"));
+
+        password.clear();
+        btnSubmit.click();
+
+        WebElement pwdError = getDriver().findElement(By.id("password-error"));
+        assertThat(pwdError.isDisplayed());
+
+        String errorMessage = pwdError.getText();
+        assertThat(errorMessage.equals("This field is required"));
+
+        password.clear();
+        password.sendKeys("1234");
+        btnSubmit.click();
+
+        assertThat(pwdError.isDisplayed());
+        assertThat(errorMessage.contains("at least 5 char"));
+
+        password.clear();
+        password.sendKeys("12345");
+        btnSubmit.click();
+        assertThat(pwdError.isDisplayed()).isFalse();
+        assertThat(!password.isDisplayed());
+
+        password.clear();
+        password.sendKeys("123456");
+        btnSubmit.click();
+        assertThat(pwdError.isDisplayed()).isFalse();
+        assertThat(!password.isDisplayed());
+
     }
 }
