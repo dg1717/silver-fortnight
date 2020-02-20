@@ -45,6 +45,7 @@ public class PredefinedStepDefs {
         Dimension maxWindowSize = new Dimension((int) screenSize.getWidth(), (int) screenSize.getHeight());
         getDriver().manage().window().setPosition(new Point(0,0));
         getDriver().manage().window().setSize(maxWindowSize);
+        System.out.println(screenSize);
     }
 
     @Then("^element with xpath \"([^\"]*)\" should be present$")

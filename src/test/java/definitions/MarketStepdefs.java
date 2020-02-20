@@ -7,6 +7,7 @@ import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import support.TestContext;
 
@@ -53,6 +54,7 @@ public class MarketStepdefs {
     public void iSetWindowToMaximum() {
         getDriver().manage().window().maximize();
         getDriver().manage().window().fullscreen();
+        System.out.println(getDriver().manage().window().getSize());
     }
 
     @And("I set window with to {int} and height to {int}")
@@ -97,7 +99,7 @@ public class MarketStepdefs {
 
     @And("I submit the form")
     public void iSubmitTheForm() {
-        getDriver().findElement(By.id("formSubmit"));
+        getDriver().findElement(By.id("formSubmit")).click();
     }
 
     @Then("element with text {string} should be displayed")
@@ -128,5 +130,48 @@ public class MarketStepdefs {
         String errorMessage = getDriver().findElement(By.id("email-error")).getText();
         assertThat(getDriver().findElement(By.id("email-error")).isDisplayed());
         assertThat(!errorMessage.equals(message));
+    }
+
+    @And("I fill in the required fields")
+    public void iFillInTheRequiredFields() {
+        getDriver().findElement(By.xpath("//input[@name='username']")).sendKeys("kiml");
+        getDriver().findElement(By.xpath("//input[@id='name']")).sendKeys("kim leung");
+        getDriver().findElement(By.xpath("//input[@name='email']")).sendKeys("abb04@yahoo.com");
+        getDriver().findElement(By.xpath("//input[@id='password']")).sendKeys("12345");
+        getDriver().findElement(By.xpath("//input[@id='confirmPassword']")).sendKeys("12345");
+
+    }
+
+    @Then("I verify Entered Data On the result page")
+    public void iVerifyEnteredDataOnTheResultPage() {
+        String result = getDriver().findElement(By.xpath("//div[@id='quotePageResult']")).getText();
+        System.out.println(result);
+        assertThat(result.contains("kiml"));
+        assertThat(result.contains("kim leung"));
+        assertThat(result.contains("kimkleung@gmail.com"));
+
+    }
+
+    @And("I verify password field behavior")
+    public void iVerifyPasswordFieldBehavior() {
+
+        WebElement btnSubmit = getDriver().findElement(By.xpath("//button[@id='formSubmit']"));
+        WebElement password = getDriver().findElement(By.xpath("//input[@id='password']"));
+        password.clear();
+        btnSubmit.click();
+        WebElement pwdError = getDriver().findElement(By.xpath("//label[@id='password-error']"));
+        String errorMessage = pwdError.getText();
+
+        assertThat(pwdError.isDisplayed()).isTrue();
+        assertThat(errorMessage.equals("This field is required."));
+
+        password.sendKeys("1234");
+        assertThat(pwdError.isDisplayed()).isTrue();
+        assertThat(errorMessage.equals("Please enter at least 5 characters."));
+        assertThat(errorMessage.contains("5 characters"));
+
+        password.sendKeys("5");
+        assertThat(pwdError.isDisplayed()).isFalse();
+
     }
 }
