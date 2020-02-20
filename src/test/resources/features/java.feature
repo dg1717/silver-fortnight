@@ -50,3 +50,7 @@ Feature: First Java Code
   @java12
   Scenario: Elements of Array
     Given I print elements of Array
+
+  @java13
+  Scenario: Reverse a String
+    Given I reverse a String

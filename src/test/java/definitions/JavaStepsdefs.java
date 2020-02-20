@@ -198,4 +198,12 @@ public class JavaStepsdefs {
            System.out.println("The elements of the Array are "+week[i]);
        }
     }
+
+    @Given("I reverse a String")
+    public void iReverseAString() {
+       String[] rev = {"J","a","v","a"};
+       for(int i = rev.length-1;i>=0;i--) {
+           System.out.print(rev[i]);
+       }
+    }
 }
